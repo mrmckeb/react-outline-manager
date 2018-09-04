@@ -1,0 +1,17 @@
+# http://editorconfig.org/
+root = true
+
+# All filetypes
+[*]
+charset = utf-8
+end_of_line = lf
+indent_size = 2
+indent_style = space
+insert_final_newline = true
+trim_trailing_whitespace = true
+
+# JavaScript and CSS
+[*.{css,js,jsx,ts,tsx}]
+indent_size = tab
+indent_style = tab
+tab_width = 4

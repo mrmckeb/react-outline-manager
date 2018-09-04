@@ -1,0 +1,11 @@
+.editorconfig
+.gitignore
+npm-debug.log
+rollup.config.js
+tsconfig.json
+yarn-error.log
+yarn.lock
+demo/
+node_modules/
+src/
+tests/
