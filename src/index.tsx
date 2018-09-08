@@ -1,22 +1,21 @@
 import * as React from 'react';
 
 interface Props {
-	children: JSX.Element,
+	children?: JSX.Element,
 	className: string,
+	tagName: string,
 	toggle: boolean,
 }
 
-const DEFAULT_CLASSNAME = 'ReactOutlineHandler';
-
 export default class ReactOutlineHander extends React.Component<Props, {}> {
+
+	static defaultProps: Partial<Props> = {
+		className: 'ReactOutlineHandler',
+		tagName: 'div',
+	}
 
 	state = {
 		isUsingKeyboard: false,
-	}
-
-	addListeners = () => {
-		window.addEventListener('keydown', this.handleTab);
-		if (this.props.toggle) window.addEventListener('mousedown', this.handleMouseDown);
 	}
 
 	componentDidMount () {
@@ -26,6 +25,11 @@ export default class ReactOutlineHander extends React.Component<Props, {}> {
 
 	componentWillUnmount () {
 		this.removeListeners();
+	}
+
+	addListeners = () => {
+		window.addEventListener('keydown', this.handleTab);
+		if (this.props.toggle) window.addEventListener('mousedown', this.handleMouseDown);
 	}
 
 	handleTab = ({ keyCode }: KeyboardEvent) => {
@@ -41,7 +45,7 @@ export default class ReactOutlineHander extends React.Component<Props, {}> {
 
 	insertStyleTag = () => {
 		const script = document.createElement('style');
-		const className = this.props.className || DEFAULT_CLASSNAME;
+		const className = this.props.className;
 
 		script.id = className;
 		script.innerText = `.${className} a:focus,.${className} area:focus,.${className} button:focus,.${className} iframe:focus,.${className} input:focus,.${className} select:focus,.${className} textarea:focus,.${className} [tabindex]:focus,.${className} [contenteditable]:focus { outline: none; }`;
@@ -55,11 +59,12 @@ export default class ReactOutlineHander extends React.Component<Props, {}> {
 	}
 
 	render () {
-		const className = this.props.className || DEFAULT_CLASSNAME;
+		const className = this.props.className;
+		const Tag = this.props.tagName;
 		return (
-			<div {...!this.state.isUsingKeyboard ? { className } : null }>
+			<Tag {...!this.state.isUsingKeyboard ? { className } : null }>
 				{this.props.children}
-			</div>
+			</Tag>
 		);
 	}
 

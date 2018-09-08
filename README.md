@@ -23,13 +23,9 @@ To use, wrap your tree with this component.
 
 ## Props
 
-### `toggle`
 
-By default, outlines are permanently shown after being enabled.
-
-Set the `toggle` prop to have React Outline Manager hide outlines again when the user resumes interacting with their
-mouse or with touch.
-
-### `className`
-
-Pass in a `className` as a string.
+|Prop       |Default value        |Description|
+|-----------|---------------------|-----------|
+|`className`|`ReactOutlineHandler`|Use this to change the class of the wrapping component. This class is only visible when outlines should be hidden.|
+|`tagName`  |`div`                |Use this to change the element type used in the wrapping component.|
+|`toggle`   |`false`              |By default, outlines are enabled when a user hits tab, but not hidden again. Set this option to `true` if you want outlines to toggle on and off as the user switches between input methods.|
