@@ -1,5 +1,6 @@
 import babel from 'rollup-plugin-babel';
 import replace from 'rollup-plugin-replace';
+import resolve from 'rollup-plugin-node-resolve';
 import packageJson from './package.json';
 
 const isDevEnv = process.env.ROLLUP_WATCH;
@@ -19,7 +20,7 @@ const productionOutputs = [
 		name: 'ReactOutlineHander',
 		globals: {
 			react: 'React',
-		},
+		}
 	},
 ];
 
@@ -37,6 +38,7 @@ export default {
 		: productionOutputs,
 	external: ['react'],
 	plugins: [
+		resolve(),
 		babel({
 			babelrc: false,
 			extensions: ['.ts', '.tsx', '.js', '.jsx'],

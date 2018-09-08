@@ -1,4 +1,4 @@
-import { Component } from 'react';
+import * as React from 'react';
 
 interface Props {
 	children: JSX.Element,
@@ -8,7 +8,7 @@ interface Props {
 
 const DEFAULT_CLASSNAME = 'ReactOutlineHandler';
 
-export default class ReactOutlineHander extends Component<Props, {}> {
+export default class ReactOutlineHander extends React.Component<Props, {}> {
 
 	state = {
 		isUsingKeyboard: false,
