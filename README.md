@@ -1,11 +1,17 @@
-# react-outline-manager
+# React Outline Manager
 
-A simple component to help manage outlines in React applications.
+![license](https://img.shields.io/npm/l/react-outline-manager.svg)
+[![npm](https://img.shields.io/npm/v/react-outline-manager.svg)](https://www.npmjs.com/package/react-outline-manager)
+![type definitions](https://img.shields.io/npm/types/react-outline-manager.svg)
+
+A simple component to help manage focus outlines in React applications.
 
 ## How it works
 
-Outlines on focussable elements are hidden by default, but shown if a user begins to interact with their keyboard
-(specifically, the `tab` key).
+Unlike CSS-only solutions that simply hide outlines on focusable elements, this component can help you to create beautiful web apps without sacrificing accessibility.
+
+When using this component, outlines on focusable elements are hidden until a user begins to interact with keyboard
+(specifically, the `tab` key). Optionally, resuming mouse/touch input can hide outlines again.
 
 Includes CJS, ESM, and UMD (supporting browser usage).
 
@@ -13,16 +19,31 @@ TypeScript definitions are also included.
 
 ## Usage
 
-To use, wrap your tree with this component.
+To install with Yarn:
+```sh
+yarn add react-outline-manager
+```
 
+To install with npm:
+```sh
+npm install react-outline-manager
 ```
-<ReactOutlineManager>
-  <YourApp />
-</ReactOutlineManager>
+
+Once installed, simply import React Outline Manager and wrap your your application.
+
+```js
+import ReactOutlineManager from 'react-outline-manager';
+
+const MyAppWithOutlineManager = () => (
+  <ReactOutlineManager>
+    <YourApp />
+  </ReactOutlineManager>
+);
 ```
+
+Only wrapped components will be affected. This means that you can also choose to only wrap a part of you application if desired.
 
 ## Props
-
 
 |Prop       |Default value        |Description|
 |-----------|---------------------|-----------|
