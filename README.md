@@ -26,7 +26,7 @@ yarn add react-outline-manager
 
 To install with npm:
 ```sh
-npm install react-outline-manager
+npm install --save react-outline-manager
 ```
 
 Once installed, simply import React Outline Manager and wrap your your application.
@@ -48,5 +48,10 @@ Only wrapped components will be affected. This means that you can also choose to
 |Prop       |Default value        |Description|
 |-----------|---------------------|-----------|
 |`className`|`ReactOutlineManager`|Use this to change the class of the wrapping component. This class is only visible when outlines should be hidden.|
-|`tagName`  |`div`                |Use this to change the element type used in the wrapping component.|
+|`tagName`  |`false`              |Use this to change the element type used in the wrapping component, such as a `div`. When `false` (or omitted), this component renders as a `Fragment` and the `className` will be applied to the `body` tag.|
 |`toggle`   |`false`              |By default, outlines are enabled when a user hits tab, but not hidden again. Set this option to `true` if you want outlines to toggle on and off as the user switches between input methods.|
+
+When `tagName` is set, you may also pass through standard React HTML props. For example:
+```js
+<ReactOutlineManager onClick={() => {}} />
+```
