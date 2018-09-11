@@ -59,13 +59,12 @@ export default class ReactOutlineHander extends React.Component<Props, {}> {
 	}
 
 	render () {
-		const className = this.props.className;
-		const Tag = this.props.tagName;
-		return (
-			<Tag {...!this.state.isUsingKeyboard ? { className } : null }>
-				{this.props.children}
-			</Tag>
-		);
+		const { children, className, tagName: Tag, ...rest } = this.props;
+
+		const props = { ...rest };
+		if (!this.state.isUsingKeyboard) props.className = className;
+
+		return <Tag { ...props } />;
 	}
 
 }
