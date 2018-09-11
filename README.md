@@ -47,6 +47,6 @@ Only wrapped components will be affected. This means that you can also choose to
 
 |Prop       |Default value        |Description|
 |-----------|---------------------|-----------|
-|`className`|`ReactOutlineHandler`|Use this to change the class of the wrapping component. This class is only visible when outlines should be hidden.|
+|`className`|`ReactOutlineManager`|Use this to change the class of the wrapping component. This class is only visible when outlines should be hidden.|
 |`tagName`  |`div`                |Use this to change the element type used in the wrapping component.|
 |`toggle`   |`false`              |By default, outlines are enabled when a user hits tab, but not hidden again. Set this option to `true` if you want outlines to toggle on and off as the user switches between input methods.|

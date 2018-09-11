@@ -10,7 +10,7 @@ interface Props {
 export default class ReactOutlineHander extends React.Component<Props, {}> {
 
 	static defaultProps: Partial<Props> = {
-		className: 'ReactOutlineHandler',
+		className: 'ReactOutlineManager',
 		tagName: 'div',
 	}
 
