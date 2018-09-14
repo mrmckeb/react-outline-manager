@@ -1,21 +1,23 @@
 # React Outline Manager
 
-![license](https://img.shields.io/npm/l/react-outline-manager.svg)
+[![license](https://img.shields.io/npm/l/react-outline-manager.svg)](https://github.com/mrmckeb/react-outline-manager/blob/develop/LICENSE)
 [![npm](https://img.shields.io/npm/v/react-outline-manager.svg)](https://www.npmjs.com/package/react-outline-manager)
-![type definitions](https://img.shields.io/npm/types/react-outline-manager.svg)
+[![type definitions](https://img.shields.io/npm/types/react-outline-manager.svg)](https://www.typescriptlang.org/)
 
-A simple component to help manage focus outlines in React applications.
+A simple component to help manage focus outlines in React applications. No dependencies.
+
+Includes CJS, ESM, and UMD (supporting browser usage) packages. TypeScript definitions are also included.
 
 ## How it works
 
-Unlike CSS-only solutions that simply hide outlines on focusable elements, this component can help you to create beautiful web apps without sacrificing accessibility.
+Unlike CSS-only solutions that simply hide outlines on focusable elements, this component can help you to create
+beautiful web apps without sacrificing accessibility.
 
 When using this component, outlines on focusable elements are hidden until a user begins to interact with keyboard
 (specifically, the `tab` key). Optionally, resuming mouse/touch input can hide outlines again.
 
-Includes CJS, ESM, and UMD (supporting browser usage).
-
-TypeScript definitions are also included.
+From version [v1.2.0](https://github.com/mrmckeb/react-outline-manager/releases/tag/v1.1.0) and above, React v16.2+ is
+required due to the introduction of `Fragment` support.
 
 ## Usage
 
@@ -41,7 +43,8 @@ const MyAppWithOutlineManager = () => (
 );
 ```
 
-Only wrapped components will be affected. This means that you can also choose to only wrap a part of you application if desired.
+Only wrapped components will be affected. This means that you can also choose to only wrap a part of you application if
+desired.
 
 ## Props
 
