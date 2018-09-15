@@ -1,18 +1,22 @@
-import * as React from 'react';
+import { Component, Fragment } from 'react';
 
-interface Props {
+interface Props extends React.HTMLProps<HTMLElement> {
 	className: string,
 	tagName?: string,
 	toggle: boolean,
 }
 
-export default class ReactOutlineHander extends React.Component<Props & React.HTMLProps<HTMLElement>, {}> {
+interface State {
+	isUsingKeyboard: boolean,
+}
+
+export default class ReactOutlineHander extends Component<Props, State> {
 
 	static defaultProps: Partial<Props> = {
 		className: 'ReactOutlineManager',
 	}
 
-	state = {
+	state: State = {
 		isUsingKeyboard: false,
 	}
 
@@ -44,9 +48,7 @@ export default class ReactOutlineHander extends React.Component<Props & React.HT
 	}
 
 	handleMouseDown = () => {
-		if (this.props.tagName) {
-			this.setState({ isUsingKeyboard: false });
-		}
+		this.setState({ isUsingKeyboard: false });
 	}
 
 	insertStyleTag = () => {
@@ -73,9 +75,9 @@ export default class ReactOutlineHander extends React.Component<Props & React.HT
 	}
 
 	render () {
-		const { children, className, tagName: Tag, ...rest } = this.props;
+		const { children, className, toggle, tagName: Tag, ...rest } = this.props;
 
-		if (!Tag) return <React.Fragment>{children}</React.Fragment>;
+		if (!Tag) return <Fragment>{children}</Fragment>;
 
 		const props = { ...rest };
 		if (!this.state.isUsingKeyboard) Object.assign(props, { className });
