@@ -1,26 +1,34 @@
-import * as React from 'react';
+import { Component, Fragment } from 'react';
 
-interface Props {
-	children?: JSX.Element,
+interface Props extends React.HTMLProps<HTMLElement> {
 	className: string,
-	tagName: string,
+	tagName?: string,
 	toggle: boolean,
 }
 
-export default class ReactOutlineHander extends React.Component<Props, {}> {
+interface State {
+	isUsingKeyboard: boolean,
+}
+
+export default class ReactOutlineHander extends Component<Props, State> {
 
 	static defaultProps: Partial<Props> = {
-		className: 'ReactOutlineHandler',
-		tagName: 'div',
+		className: 'ReactOutlineManager',
 	}
 
-	state = {
+	state: State = {
 		isUsingKeyboard: false,
 	}
 
 	componentDidMount () {
 		this.addListeners();
 		this.insertStyleTag();
+		if (!this.props.tagName) this.updateClassName(this.props.className);
+	}
+
+	componentDidUpdate () {
+		if (this.props.tagName) return;
+		this.updateClassName(this.props.className);
 	}
 
 	componentWillUnmount () {
@@ -58,14 +66,22 @@ export default class ReactOutlineHander extends React.Component<Props, {}> {
 		window.removeEventListener('mousedown', this.handleMouseDown);
 	}
 
+	updateClassName = (className: string) => {
+		if (this.state.isUsingKeyboard) {
+			document.body.classList.remove(className);
+		} else {
+			document.body.classList.add(className);
+		}
+	}
+
 	render () {
-		const className = this.props.className;
-		const Tag = this.props.tagName;
-		return (
-			<Tag {...!this.state.isUsingKeyboard ? { className } : null }>
-				{this.props.children}
-			</Tag>
-		);
+		const { children, className, toggle, tagName: Tag, ...rest } = this.props;
+
+		if (!Tag) return <Fragment>{children}</Fragment>;
+
+		const props = { ...rest };
+		if (!this.state.isUsingKeyboard) Object.assign(props, { className });
+		return <Tag { ...props } />;
 	}
 
 }

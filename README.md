@@ -1,31 +1,60 @@
-# react-outline-manager
+# React Outline Manager
 
-A simple component to help manage outlines in React applications.
+[![license](https://img.shields.io/npm/l/react-outline-manager.svg)](https://github.com/mrmckeb/react-outline-manager/blob/develop/LICENSE)
+[![npm](https://img.shields.io/npm/v/react-outline-manager.svg)](https://www.npmjs.com/package/react-outline-manager)
+[![type definitions](https://img.shields.io/npm/types/react-outline-manager.svg)](https://www.typescriptlang.org/)
+
+A simple component to help manage focus outlines in React applications. No dependencies.
+
+Includes CJS, ESM, and UMD (supporting browser usage) packages. TypeScript definitions are also included.
 
 ## How it works
 
-Outlines on focussable elements are hidden by default, but shown if a user begins to interact with their keyboard
-(specifically, the `tab` key).
+Unlike CSS-only solutions that simply hide outlines on focusable elements, this component can help you to create
+beautiful web apps without sacrificing accessibility.
 
-Includes CJS, ESM, and UMD (supporting browser usage).
+When using this component, outlines on focusable elements are hidden until a user begins to interact with keyboard
+(specifically, the `tab` key). Optionally, resuming mouse/touch input can hide outlines again.
 
-TypeScript definitions are also included.
+From version [v1.2.0](https://github.com/mrmckeb/react-outline-manager/releases/tag/v1.1.0) and above, React v16.2+ is
+required due to the introduction of `Fragment` support.
 
 ## Usage
 
-To use, wrap your tree with this component.
+To install with Yarn:
+```sh
+yarn add react-outline-manager
+```
 
+To install with npm:
+```sh
+npm install --save react-outline-manager
 ```
-<ReactOutlineManager>
-  <YourApp />
-</ReactOutlineManager>
+
+Once installed, simply import React Outline Manager and wrap your your application.
+
+```js
+import ReactOutlineManager from 'react-outline-manager';
+
+const MyAppWithOutlineManager = () => (
+  <ReactOutlineManager>
+    <YourApp />
+  </ReactOutlineManager>
+);
 ```
+
+Only wrapped components will be affected. This means that you can also choose to only wrap a part of you application if
+desired.
 
 ## Props
 
-
 |Prop       |Default value        |Description|
 |-----------|---------------------|-----------|
-|`className`|`ReactOutlineHandler`|Use this to change the class of the wrapping component. This class is only visible when outlines should be hidden.|
-|`tagName`  |`div`                |Use this to change the element type used in the wrapping component.|
+|`className`|`ReactOutlineManager`|Use this to change the class of the wrapping component. This class is only visible when outlines should be hidden.|
+|`tagName`  |`false`              |Use this to change the element type used in the wrapping component, such as a `div`. When `false` (or omitted), this component renders as a `Fragment` and the `className` will be applied to the `body` tag.|
 |`toggle`   |`false`              |By default, outlines are enabled when a user hits tab, but not hidden again. Set this option to `true` if you want outlines to toggle on and off as the user switches between input methods.|
+
+When `tagName` is set, you may also pass through standard React HTML props. For example:
+```js
+<ReactOutlineManager onClick={() => {}} />
+```
