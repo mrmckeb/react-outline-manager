@@ -16,7 +16,7 @@ beautiful web apps without sacrificing accessibility.
 When using this component, outlines on focusable elements are hidden until a user begins to interact with keyboard
 (specifically, the `tab` key). Optionally, resuming mouse/touch input can hide outlines again.
 
-From version [v1.2.0](https://github.com/mrmckeb/react-outline-manager/releases/tag/v1.1.0) and above, React v16.2+ is
+From version [v1.2.0](https://github.com/mrmckeb/react-outline-manager/releases/tag/v1.2.0) and above, React v16.2+ is
 required due to the introduction of `Fragment` support.
 
 ## Usage

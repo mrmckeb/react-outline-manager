@@ -1,4 +1,5 @@
 import babel from 'rollup-plugin-babel';
+import commonjs from 'rollup-plugin-commonjs';
 import replace from 'rollup-plugin-replace';
 import resolve from 'rollup-plugin-node-resolve';
 import packageJson from './package.json';
@@ -38,7 +39,6 @@ export default {
 		: productionOutputs,
 	external: ['react'],
 	plugins: [
-		resolve(),
 		babel({
 			babelrc: false,
 			extensions: ['.ts', '.tsx', '.js', '.jsx'],
@@ -52,6 +52,8 @@ export default {
 				'@babel/preset-typescript',
 			],
 		}),
+		resolve(),
+		commonjs(),
 		replace({
 			'process.env.NODE_ENV': JSON.stringify(process.env.NODE_ENV)
 		}),
