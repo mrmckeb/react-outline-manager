@@ -1,4 +1,4 @@
-import { Component, Fragment } from 'react';
+import * as React from 'react';
 
 interface Props extends React.HTMLProps<HTMLElement> {
 	className: string,
@@ -10,7 +10,7 @@ interface State {
 	isUsingKeyboard: boolean,
 }
 
-export default class ReactOutlineHander extends Component<Props, State> {
+export default class ReactOutlineHander extends React.Component<Props, State> {
 
 	static defaultProps: Partial<Props> = {
 		className: 'ReactOutlineManager',
@@ -58,7 +58,7 @@ export default class ReactOutlineHander extends Component<Props, State> {
 		script.id = className;
 		script.innerText = `.${className} a:focus,.${className} area:focus,.${className} button:focus,.${className} iframe:focus,.${className} input:focus,.${className} select:focus,.${className} textarea:focus,.${className} [tabindex]:focus,.${className} [contenteditable]:focus { outline: none; }`;
 
-		document.head.appendChild(script);
+		document.head && document.head.appendChild(script);
 	}
 
 	removeListeners = () => {
@@ -77,7 +77,7 @@ export default class ReactOutlineHander extends Component<Props, State> {
 	render () {
 		const { children, className, toggle, tagName: Tag, ...rest } = this.props;
 
-		if (!Tag) return <Fragment>{children}</Fragment>;
+		if (!Tag) return <React.Fragment>{children}</React.Fragment>;
 
 		const props = { ...rest };
 		if (!this.state.isUsingKeyboard) Object.assign(props, { className });
